@@ -1,0 +1,177 @@
+/* Root Colors */
+:root {
+    --bg-color: #050505;
+    --accent-blue: #00d2ff;
+    --dark-surface: #0b0b0b;
+    --transition-speed: 0.8s;
+}
+
+/* Body */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-color);
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+}
+
+/* ============================= */
+/* Neon Rotating Border Card */
+/* ============================= */
+.outer-card {
+    position: relative;
+    width: 700px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Border Rotation ONLY */
+.outer-card::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    background: conic-gradient(var(--accent-blue), transparent, var(--accent-blue));
+    animation: rotateBorder 4s linear infinite;
+}
+
+/* Inner Content Box */
+.outer-card::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    background: var(--dark-surface);
+    border-radius: 12px;
+    z-index: 1;
+}
+
+/* Rotation Animation */
+@keyframes rotateBorder {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================= */
+/* Main Container (Black Part) */
+/* ============================= */
+.container {
+    position: absolute;
+    inset: 4px;
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--dark-surface);
+}
+
+/* ============================= */
+/* Overlay Split + Divider */
+/* ============================= */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-blue), #003344);
+    transition: clip-path var(--transition-speed) ease-in-out;
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+
+/* Diagonal Clip Paths */
+.container.login-active .overlay {
+    clip-path: polygon(40% 0, 100% 0, 100% 100%, 80% 100%);
+    
+}
+
+.container.register-active .overlay {
+    clip-path: polygon(0 0, 55% 0, 20% 100%, 0 100%);
+}
+
+/* Overlay Text */
+#overlayText {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: all 0.5s ease;
+    color: white;
+}
+
+/* WELCOME BACK position */
+.login-text {
+    top: 30%;
+    right: 2%;
+    transform: translateY(-50%);
+}
+
+/* WELCOME position */
+.register-text {
+    top: 60px;
+    left: 40px;
+    transform: none;
+    font-size: 3rem;
+}
+
+/* ============================= */
+/* Form Boxes */
+/* ============================= */
+.form-box {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 3;
+    transition: opacity 0.4s ease;
+}
+
+.container.login-active .register-form {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container.register-active .login-form {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+
+/* Button */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to right, #0084a3, var(--accent-blue));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Toggle Link */
+.toggle-link {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.toggle-link span {
+    color: var(--accent-blue);
+    cursor: pointer;
+}

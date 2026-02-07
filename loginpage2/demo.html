@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="democ.css">
+</head>
+<body>
+
+<div class="outer-card">
+
+    <div class="container login-active" id="mainContainer">
+
+        <!-- Login Form -->
+        <div class="form-box login-form">
+            <h2>Login</h2>
+            <div class="input-group"><input type="text" placeholder="Username"></div>
+            <div class="input-group"><input type="password" placeholder="Password"></div>
+            <button>Login</button>
+            <p class="toggle-link">
+                Don't have an account?
+                <span onclick="toggleForm()">Sign Up</span>
+            </p>
+        </div>
+
+        <!-- Register Form -->
+        <div class="form-box register-form">
+            <h2>Register</h2>
+            <div class="input-group"><input type="text" placeholder="Username"></div>
+            <div class="input-group"><input type="email" placeholder="Email"></div>
+            <div class="input-group"><input type="password" placeholder="Password"></div>
+            <button>Register</button>
+            <p class="toggle-link">
+                Already have an account?
+                <span onclick="toggleForm()">Sign In</span>
+            </p>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay">
+            <h1 id="overlayText" class="login-text">WELCOME BACK!</h1>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const container = document.getElementById("mainContainer");
+const overlayText = document.getElementById("overlayText");
+
+function toggleForm() {
+    if (container.classList.contains("login-active")) {
+        container.classList.replace("login-active", "register-active");
+        overlayText.innerText = "WELCOME!";
+        overlayText.classList.remove("login-text");
+        overlayText.classList.add("register-text");
+    } else {
+        container.classList.replace("register-active", "login-active");
+        overlayText.innerText = "WELCOME BACK!";
+        overlayText.classList.remove("register-text");
+        overlayText.classList.add("login-text");
+    }
+}
+</script>
+
+</body>
+</html>

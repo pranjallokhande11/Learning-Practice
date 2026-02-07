@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+<link rel="icon" type="image/x-icon" href="../images/tree.jpg">
+  <link rel="stylesheet" href="register.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <form action="" onsubmit="return checkPassword()">
+
+
+      <h1>Register</h1>
+
+      <!-- Full Name -->
+      <div class="input-box">
+        <input type="text" placeholder="Full Name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+
+      <!-- Email -->
+      <div class="input-box">
+        <input type="email" placeholder="Email Address" required>
+        <i class='bx bxs-envelope'></i>
+      </div>
+
+      <!-- Username -->
+      <div class="input-box">
+        <input type="text" placeholder="Username" required>
+        <i class='bx bxs-user-circle'></i>
+      </div>
+
+    <!-- Password -->
+<div class="input-box">
+  <input type="password" id="password" placeholder="Password" required>
+  <i class='bx bxs-lock-alt'></i>
+</div>
+
+<!-- Confirm Password -->
+<div class="input-box">
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+  <i class='bx bxs-lock'></i>
+</div>
+
+<!-- Error Message -->
+<p id="message"></p>
+
+      <!-- Terms -->
+      <div class="remember-forget">
+        <label><input type="checkbox" required> I agree to Terms</label>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" class="btn">Register</button>
+
+      <!-- Login Link -->
+      <div class="register-link">
+        <p>Already have an account?</p>
+        <a class="re" href="index.html">Login</a>
+      </div>
+
+    </form>
+  </div>
+
+  </div>
+
+
+  <!--  JAVASCRIPT BELOW -->
+  <script>
+    function checkPassword() {
+
+      let pass = document.getElementById("password").value;
+      let confirmPass = document.getElementById("confirmPassword").value;
+      let msg = document.getElementById("message");
+
+      if (pass !== confirmPass) {
+        msg.style.color = "red";
+        msg.innerHTML = "❌ Passwords do not match! Both passwords should be same";
+        return false; // stop form submit
+      }
+
+      msg.style.color = "lightgreen";
+      msg.innerHTML = "✅ Passwords match!";
+      return true; // allow form submit
+    }
+  </script>
+</body>
+</html>
